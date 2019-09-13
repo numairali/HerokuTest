@@ -23,6 +23,7 @@ export interface IUser {
     email?: string;
     phone?: string;
     picture?: any;
+    cell?: any;
 }
 
 export class User implements IUser {
@@ -32,6 +33,7 @@ export class User implements IUser {
         public location?: any,
         public email?: string,
         public phone?: string,
-        public picture?: any) {
+        public picture?: any,
+        public cell?: any) {
     }
 }
