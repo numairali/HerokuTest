@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row login_box">
+    <div class="col-md-12 col-xs-12" align="center">
+      <div class="outter"><img src={{user.picture.large}} class="image-circle" /></div>
+      <h1>{{user.name.first | titlecase }} {{user.name.last | titlecase }}</h1>
+      <h1>{{user.cell}}</h1>
+    </div>
+    <div class="col-md-12 col-xs-12 login_control">
+
+      <div class="control">
+        <div class="label">Email Address</div>
+        <input type="text" class="form-control" value="{{user.email}}" disabled />
+      </div>
+
+      <div class="control">
+        <div class="label">Address</div>
+        <input type="text" class="form-control"
+          value="{{user.location.street | titlecase}}, {{user.location.city | titlecase}}, {{user.location.state | uppercase }}, {{user.location.postcode }}"
+          disabled />
+      </div>
+      <div align="center">
+        <button class="btn btn-orange" mat-dialog-close>CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>

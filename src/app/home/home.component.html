@@ -1,0 +1,75 @@
+
+<div class="container">
+    <h4>Game of Thrones</h4>
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+      </mat-form-field>
+    </div>
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+    <!-- image Column -->
+    <ng-container matColumnDef="image">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let data" style="width:100px;">
+        <img src={{data.image.medium}} style="width: 40px; height: 40px;">
+      </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+      <td mat-cell *matCellDef="let data" style="width:200px;"> {{data.name}} </td>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="summary">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+        <td mat-cell *matCellDef="let data" style="max-width: 300px; min-height: 300px;"><div [innerHTML]="data.summary"></div> </td>
+      </ng-container>
+      
+    <!-- season Column -->
+    <ng-container matColumnDef="season">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Season </th>
+      <td mat-cell *matCellDef="let data"> {{data.season}} </td>
+    </ng-container>
+
+    <!-- number Column -->
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Episode </th>
+      <td mat-cell *matCellDef="let data"> {{data.number}} </td>
+    </ng-container>
+
+    <!-- runtime Column -->
+    <ng-container matColumnDef="runtime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Duration </th>
+      <td mat-cell *matCellDef="let data"> {{data.runtime}} mins </td>
+    </ng-container>
+
+    <!-- url Column -->
+    <ng-container matColumnDef="url">
+      <th mat-header-cell *matHeaderCellDef> URL </th>
+      <td mat-cell *matCellDef="let data"><a href={{data.url}} target="_blank">link</a> </td>
+    </ng-container>
+
+    <!-- airtime Column -->
+    <ng-container matColumnDef="airtime">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Airtime </th>
+      <td mat-cell *matCellDef="let data"> {{data.airtime}} </td>
+    </ng-container>
+
+    <!-- airdate Column -->
+    <ng-container matColumnDef="airdate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Airdate </th>
+      <td mat-cell *matCellDef="let data"> {{data.airdate}} </td>
+    </ng-container>
+
+    <!-- airstamp Column -->
+    <!-- <ng-container matColumnDef="airstamp">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> airstamp </th>
+      <td mat-cell *matCellDef="let data"> {{data.airstamp}} </td>
+    </ng-container> -->
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[25, 15, 5]" showFirstLastButtons></mat-paginator>
